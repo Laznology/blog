@@ -2,7 +2,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   site: {
-    url: "http://localhost:3000",
+    url: process.env.NUXT_PUBLIC_SITE_URL,
     name: "Laz Blog",
     description: "The Modern Publisher built with Nuxt, Tailwind and Shadcn.",
     defaultLocale: "id",
