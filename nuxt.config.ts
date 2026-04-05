@@ -1,12 +1,23 @@
 import tailwindcss from "@tailwindcss/vite";
+
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || "https://laznology.dev";
+const siteEnv = process.env.NUXT_SITE_ENV || "production";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL,
+    url: siteUrl,
+    indexable: siteEnv === "production",
     name: "Laz Blog",
     description:
       "Catatan rasa penasaran IT: kenapa sesuatu ada, kenapa dibuat, dan kenapa berjalan seperti itu.",
     defaultLocale: "id",
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/about", "/blog", "/robots.txt", "/sitemap.xml"],
+    },
   },
   features: {
     inlineStyles: false,
