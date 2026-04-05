@@ -4,25 +4,12 @@ export default defineNuxtConfig({
   site: {
     url: process.env.NUXT_PUBLIC_SITE_URL,
     name: "Laz Blog",
-    description: "The Modern Publisher built with Nuxt, Tailwind and Shadcn.",
+    description:
+      "Catatan rasa penasaran IT: kenapa sesuatu ada, kenapa dibuat, dan kenapa berjalan seperti itu.",
     defaultLocale: "id",
   },
-  routeRules: {
-    "/_nuxt/**": {
-      headers: { "cache-control": "public, max-age=31536000, immutable" },
-    },
-  },
   features: {
-    inlineStyles: true,
-  },
-  experimental: {
-    inlineSSRStyles: true,
-    payloadExtraction: true,
-    defaults: {
-      nuxtLink: {
-        prefetchOn: "interaction",
-      },
-    },
+    inlineStyles: false,
   },
   css: ["~/assets/css/tailwind.css"],
   modules: [
@@ -35,10 +22,38 @@ export default defineNuxtConfig({
     "shadcn-nuxt",
     "@vueuse/nuxt",
   ],
-  devtools: { enabled: true },
-  compatibilityDate: "2024-04-03",
+  runtimeConfig: {
+    public: {
+      githubUsername: process.env.NUXT_PUBLIC_GITHUB_USERNAME || "",
+    },
+  },
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          theme: {
+            default: "github-light",
+            dark: "github-dark",
+          },
+        },
+      },
+    },
+  },
+  ogImage: {
+    enabled: false,
+  },
+  devtools: { enabled: false },
+  compatibilityDate: "latest",
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: [
+        "class-variance-authority",
+        "reka-ui",
+        "clsx",
+        "tailwind-merge",
+      ],
+    },
   },
   shadcn: {
     /**
