@@ -40,6 +40,7 @@ export default defineNuxtConfig({
   routeRules: {
     "/_nuxt/**": {
       headers: { "cache-control": "public, max-age=31536000, immutabel" },
+      cache: { maxAge: 3600 },
     },
   },
   nitro: {
