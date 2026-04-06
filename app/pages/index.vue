@@ -35,7 +35,7 @@ const { data: latestArticles } = await useAsyncData("latest-articles", () => {
       <div class="container mx-auto px-4 lg:px-16 relative z-10 w-full">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end">
           <div
-            class="lg:col-span-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
+            class="lg:col-span-8"
           >
             <h1
               class="text-[14vw] sm:text-[12vw] lg:text-[9.5vw] font-serif font-light tracking-tighter text-foreground leading-[0.85] mix-blend-darken dark:mix-blend-lighten"
@@ -48,7 +48,7 @@ const { data: latestArticles } = await useAsyncData("latest-articles", () => {
           </div>
 
           <div
-            class="lg:col-span-4 pb-4 lg:pb-8 animate-in fade-in slide-in-from-right-12 duration-1000 delay-300 fill-mode-both"
+            class="lg:col-span-4 pb-4 lg:pb-8"
           >
             <div class="border-l border-primary/30 pl-8 space-y-8">
               <p
@@ -78,7 +78,7 @@ const { data: latestArticles } = await useAsyncData("latest-articles", () => {
 
     <section class="py-32 container mx-auto px-4 lg:px-16 relative z-10">
       <div
-        class="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-border/40 pb-8 animate-in fade-in slide-in-from-bottom-8 duration-700"
+        class="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-border/40 pb-8"
       >
         <h2
           class="text-4xl sm:text-5xl lg:text-7xl font-serif font-light tracking-tight text-foreground/90"
@@ -101,7 +101,7 @@ const { data: latestArticles } = await useAsyncData("latest-articles", () => {
           v-for="(article, index) in latestArticles"
           :key="article.path"
           :to="article.path"
-          class="group block animate-in fade-in slide-in-from-bottom-12 duration-1000 fill-mode-both"
+          class="group block"
           :style="`animation-delay: ${index * 200}ms`"
         >
           <Card

@@ -49,12 +49,12 @@ useSeoMeta({
               class="text-foreground/30 text-xs uppercase tracking-widest w-16 shrink-0"
               >Web</span
             >
-            <a
+            <NuxtLink
               href="https://laznology.dev"
               target="_blank"
               rel="noopener noreferrer"
               class="text-foreground/70 border-b border-foreground/20 hover:text-primary hover:border-primary transition-colors pb-px"
-              >laznology.dev</a
+              >laznology.dev</NuxtLink
             >
           </li>
           <li class="flex gap-4 items-center">
