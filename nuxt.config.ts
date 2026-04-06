@@ -37,6 +37,11 @@ export default defineNuxtConfig({
       "Catatan rasa penasaran IT: kenapa sesuatu ada, kenapa dibuat, dan kenapa berjalan seperti itu.",
     defaultLocale: "id",
   },
+  routeRules: {
+    "/_nuxt/**": {
+      headers: { "cache-control": "public, max-age=31536000, immutabel" },
+    },
+  },
   nitro: {
     prerender: {
       crawlLinks: true,
