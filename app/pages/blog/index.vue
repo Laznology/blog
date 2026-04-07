@@ -14,6 +14,11 @@ useSeoMeta({
     "Arsip tulisan seputar rasa penasaran IT: kenapa sesuatu ada, kenapa dibuat, dan kenapa berjalan seperti itu.",
 });
 
+defineOgImage('Hero.takumi', {
+  title: "The Archive",
+  description: "Arsip tulisan seputar rasa penasaran IT: kenapa sesuatu ada, kenapa dibuat, dan kenapa berjalan seperti itu.",
+});
+
 const { data: allArticles } = await useAsyncData("blog-archive", () => {
   return queryCollection("content").order("path", "DESC").all();
 });

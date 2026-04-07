@@ -4,26 +4,25 @@ useSeoMeta({
   description:
     "Laz — developer yang mengejar rasa penasaran IT: kenapa sesuatu ada, kenapa dibuat, dan kenapa bekerja seperti itu.",
 });
+
+defineOgImage('Hero.takumi', {
+  title: "Manifesto — laznology.",
+  description: "A quiet obsession. Laz — developer yang mengejar rasa penasaran IT.",
+});
 </script>
 
 <template>
   <div class="max-w-2xl mx-auto px-4 py-24 sm:py-32">
     <header class="mb-20">
-      <p
-        class="text-xs font-sans uppercase tracking-[0.3em] text-foreground/40 mb-6"
-      >
+      <p class="text-xs font-sans uppercase tracking-[0.3em] text-foreground/40 mb-6">
         Manifesto
       </p>
-      <h1
-        class="text-5xl sm:text-7xl font-serif font-light leading-[1.05] tracking-wide text-foreground/90"
-      >
+      <h1 class="text-5xl sm:text-7xl font-serif font-light leading-[1.05] tracking-wide text-foreground/90">
         A quiet<br />obsession.
       </h1>
     </header>
 
-    <div
-      class="space-y-16 font-serif text-lg sm:text-xl font-light leading-loose text-foreground/70"
-    >
+    <div class="space-y-16 font-serif text-lg sm:text-xl font-light leading-loose text-foreground/70">
       <section>
         <p>
           I am <span class="text-foreground/90 italic">Laz</span> — a developer

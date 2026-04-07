@@ -14,6 +14,11 @@ useSeoMeta({
     "Refleksi dan eksplorasi IT tentang kenapa sesuatu ada, kenapa dibuat, dan kenapa berjalan seperti itu.",
 });
 
+defineOgImage("Hero.takumi", {
+  title: "Laz Blog",
+  description: "Refleksi dan eksplorasi IT tentang kenapa sesuatu ada, kenapa dibuat, dan kenapa berjalan seperti itu.",
+});
+
 const { data: latestArticles } = await useAsyncData("latest-articles", () => {
   return queryCollection("content").order("path", "DESC").limit(3).all();
 });

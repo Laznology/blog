@@ -26,11 +26,22 @@ if (!page.value) {
   });
 }
 
-useSeoMeta({
-  title: page.value?.title,
-  description: page.value?.description,
-  ogImage: page.value?.image,
-});
+if (page.value?.image) {
+  useSeoMeta({
+    title: page.value?.title,
+    description: page.value?.description,
+    ogImage: page.value?.image,
+  });
+} else {
+  useSeoMeta({
+    title: page.value?.title,
+    description: page.value?.description,
+  });
+  defineOgImage('Hero.takumi', {
+    title: page.value?.title,
+    description: page.value?.description,
+  });
+}
 
 const tocLinks = computed(() => {
   return page.value?.body?.toc?.links || [];
