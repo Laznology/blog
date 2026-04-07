@@ -33,11 +33,11 @@ const isAtBottom = computed(() => {
   cursor: pointer;
   user-select: none;
   transform-origin: top left;
-  transition: transform 1s cubic-bezier(0.09, 1, 0.22, 1);
+  transition: transform 0.5s cubic-bezier(0.78, 0, 0.22, 1);
 }
 
 .to-bottom {
-  transform: translateY(calc(100dvh - 100% - 7.5rem)) translateX(2rem);
+  transform: translateY(calc(100dvh - 100% - 7.5rem)) translateX(100%);
 }
 
 @media (min-width: 1024px) {
