@@ -42,6 +42,7 @@ export default defineNuxtConfig({
       headers: { "cache-control": "public, max-age=31536000, immutabel" },
       cache: { maxAge: 3600 },
     },
+    "/blog/**": { prerender: true },
   },
   nitro: {
     prerender: {
@@ -65,24 +66,27 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      githubUsername: process.env.NUXT_PUBLIC_GITHUB_USERNAME || "",
+      githubUsername: process.env.NUXT_PUBLIC_GITHUB_USERNAME,
     },
   },
   content: {
     build: {
       markdown: {
         highlight: {
-          theme: {
-            default: "github-light",
-            dark: "github-dark",
-          },
+          theme: "ayu-light",
         },
       },
     },
   },
-  sitemap: { zeroRuntime: false },
+  sitemap: { zeroRuntime: true },
   ogImage: {
-    enabled: false,
+    buildCache: true,
+    enabled: true,
+    zeroRuntime: true,
+    defaults: {
+      extension: "jpeg", 
+      cacheMaxAgeSeconds: 60 * 60 * 24 * 7,
+    },
   },
   devtools: { enabled: false },
   compatibilityDate: "latest",
