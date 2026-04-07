@@ -8,7 +8,7 @@
       <div>
         <div class="h-10 sm:h-12" aria-hidden="true" />
         <p
-          class="text-sm text-foreground/50 font-sans font-light tracking-wide max-w-md mt-1"
+          class="text-sm text-foreground/50 font-sans font-light tracking-wide max-w-md text-center md:text-left mt-1"
         >
           Give your minds a stage, not a cage.
         </p>
