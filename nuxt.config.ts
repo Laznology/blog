@@ -5,6 +5,16 @@ const siteEnv = process.env.NUXT_SITE_ENV || "production";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        umamiAnalytics: {
+          websiteId: process.env.UMAMI_WEBSITE_ID,
+          trigger: "onNuxtReady",
+        },
+      },
+    },
+  },
   app: {
     head: {
       link: [
@@ -63,6 +73,7 @@ export default defineNuxtConfig({
     "@nuxtjs/seo",
     "shadcn-nuxt",
     "@vueuse/nuxt",
+    "@nuxt/scripts",
   ],
   runtimeConfig: {
     public: {
@@ -84,7 +95,7 @@ export default defineNuxtConfig({
     enabled: true,
     zeroRuntime: true,
     defaults: {
-      extension: "jpeg", 
+      extension: "jpeg",
       cacheMaxAgeSeconds: 60 * 60 * 24 * 7,
     },
   },
