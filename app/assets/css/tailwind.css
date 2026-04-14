@@ -1,1 +1,151 @@
-@import "tailwindcss";@plugin "@tailwindcss/typography";
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: "Inter", "Noto Sans JP", -apple-system, system-ui, sans-serif;
+  --font-serif: "Lora", "Prata", "Playfair Display", serif;
+  --font-mono: "Fira Code", monospace;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+}
+
+@layer base {
+  :root {
+    --background: #faf8f5;
+    --foreground: #1c1a19;
+
+    --card: #ffffff;
+    --card-foreground: #1c1a19;
+
+    --popover: #ffffff;
+    --popover-foreground: #1c1a19;
+
+    /* Awwwards SOTD vibrant orange */
+    --primary: #FF4F00;
+    --primary-foreground: #ffffff;
+
+    --secondary: #f2efe9;
+    --secondary-foreground: #45413d;
+
+    --muted: #f2efe9;
+    --muted-foreground: #8a857e;
+
+    --accent: #f2efe9;
+    --accent-foreground: #1c1a19;
+
+    --destructive: #d66464;
+    --destructive-foreground: #ffffff;
+
+    --border: #e2ddd0;
+    --input: #e2ddd0;
+    --ring: #FF4F00;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #121110;
+    --foreground: #f4ece1;
+
+    --card: #1c1a19;
+    --card-foreground: #f4ece1;
+
+    --popover: #1c1a19;
+    --popover-foreground: #f4ece1;
+
+    /* Bright orange for dark mode contrast */
+    --primary: #FF6600;
+    --primary-foreground: #ffffff;
+
+    --secondary: #262322;
+    --secondary-foreground: #e6e2db;
+
+    --muted: #262322;
+    --muted-foreground: #a09a92;
+
+    --accent: #262322;
+    --accent-foreground: #e6e2db;
+
+    --destructive: #b35252;
+    --destructive-foreground: #f4ece1;
+
+    --border: #332f2e;
+    --input: #332f2e;
+    --ring: #FF6600;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-normal text-foreground/95 font-light;
+  }
+  p {
+    @apply leading-loose tracking-wide;
+  }
+
+  /* Search result highlight */
+  mark {
+    background: transparent;
+    color: var(--color-primary);
+    border-bottom: 1.5px solid currentColor;
+    font-style: italic;
+    padding: 0 1px;
+  }
+}
+

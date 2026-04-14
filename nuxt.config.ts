@@ -1,28 +1,67 @@
 import tailwindcss from "@tailwindcss/vite";
+
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL;
+const siteEnv = process.env.NUXT_SITE_ENV || "production";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  $production: {
+    scripts: {
+      registry: {
+        umamiAnalytics: {
+          websiteId: process.env.UMAMI_WEBSITE_ID,
+          trigger: "onNuxtReady",
+        },
+      },
+    },
+  },
+  app: {
+    head: {
+      link: [
+        {
+          rel: "apple-touch-icon",
+          sizes: "180x180",
+          href: "/apple-touch-icon.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "32x32",
+          href: "/favicon-32x32.png",
+        },
+        {
+          rel: "icon",
+          type: "image/png",
+          sizes: "16x16",
+          href: "/favicon-16x16.png",
+        },
+        { rel: "manifest", href: "/site.webmanifest" },
+      ],
+    },
+  },
   site: {
-    url: process.env.NUXT_PUBLIC_SITE_URL,
+    url: siteUrl,
+    indexable: siteEnv === "production",
     name: "Laz Blog",
-    description: "The Modern Publisher built with Nuxt, Tailwind and Shadcn.",
+    description:
+      "Catatan rasa penasaran IT: kenapa sesuatu ada, kenapa dibuat, dan kenapa berjalan seperti itu.",
     defaultLocale: "id",
   },
   routeRules: {
     "/_nuxt/**": {
-      headers: { "cache-control": "public, max-age=31536000, immutable" },
+      headers: { "cache-control": "public, max-age=31536000, immutabel" },
+      cache: { maxAge: 3600 },
+    },
+    "/blog/**": { prerender: true },
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/about", "/blog", "/robots.txt", "/sitemap.xml"],
     },
   },
   features: {
-    inlineStyles: true,
-  },
-  experimental: {
-    inlineSSRStyles: true,
-    payloadExtraction: true,
-    defaults: {
-      nuxtLink: {
-        prefetchOn: "interaction",
-      },
-    },
+    inlineStyles: false,
   },
   css: ["~/assets/css/tailwind.css"],
   modules: [
@@ -34,11 +73,44 @@ export default defineNuxtConfig({
     "@nuxtjs/seo",
     "shadcn-nuxt",
     "@vueuse/nuxt",
+    "@nuxt/scripts",
   ],
+  runtimeConfig: {
+    public: {
+      githubUsername: process.env.NUXT_PUBLIC_GITHUB_USERNAME,
+    },
+  },
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          theme: "ayu-light",
+        },
+      },
+    },
+  },
+  sitemap: { zeroRuntime: true },
+  ogImage: {
+    buildCache: true,
+    enabled: true,
+    zeroRuntime: true,
+    defaults: {
+      extension: "jpeg",
+      cacheMaxAgeSeconds: 60 * 60 * 24 * 7,
+    },
+  },
   devtools: { enabled: true },
-  compatibilityDate: "2024-04-03",
+  compatibilityDate: "latest",
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: [
+        "class-variance-authority",
+        "reka-ui",
+        "clsx",
+        "tailwind-merge",
+      ],
+    },
   },
   shadcn: {
     /**
