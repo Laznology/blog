@@ -30,7 +30,7 @@ const { data: latestArticles } = await useAsyncData("latest-articles", () => {
         style="animation-duration: 8s" />
       <div
         class="absolute left-[-10%] bottom-[-20%] w-[60vw] h-[60vw] max-w-150 max-h-150 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-      
+
 
       <div class="container mx-auto px-4 lg:px-16 relative z-10 w-full">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end">
@@ -70,8 +70,7 @@ const { data: latestArticles } = await useAsyncData("latest-articles", () => {
         <h2 class="text-4xl sm:text-5xl lg:text-7xl font-serif font-light tracking-tight text-foreground/90">
           Curated
         </h2>
-        <NuxtLink 
-          to="/blog"
+        <NuxtLink to="/blog"
           class="text-xs font-sans uppercase tracking-[0.2em] text-foreground/50 hover:text-primary transition-colors mt-4 md:mt-0 group flex items-center gap-3">
           Full Collection
           <span
@@ -80,30 +79,32 @@ const { data: latestArticles } = await useAsyncData("latest-articles", () => {
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-12">
-        <NuxtLink 
-          v-for="(article, index) in latestArticles" :key="article.path" :to="article.path" class="group block"
+        <NuxtLink v-for="(article, index) in latestArticles" :key="article.path" :to="article.path" class="group block"
           :style="`animation-delay: ${index * 200}ms`">
           <Card class="border-0 rounded-none shadow-none bg-transparent h-full flex flex-col relative overflow-visible">
             <div
-              class="w-full aspect-4/5 overflow-hidden relative bg-muted/20 mb-8 rounded-xl shadow-2xl shadow-primary/5 group-hover:shadow-primary/20 transition-all duration-700">
-              <NuxtImg
-                v-if="article.image" :src="article.image"
+              class="w-full aspect-4/5 overflow-hidden relative bg-muted/20 mb-8 rounded-xl transition-all duration-700">
+              <NuxtImg v-if="article.image" :src="article.image"
                 class="w-full h-full object-cover scale-100 group-hover:scale-110 transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)]"
                 :alt="article.title" />
-              <div 
-                v-else class="w-full h-full flex items-center justify-center">
-                <span class="text-xs font-serif tracking-widest text-foreground/10 uppercase">Aesthetic Void</span>
+              <div v-else
+                class="w-full h-full flex flex-col bg-linear-to-br from-transparent to-primary/10 items-center justify-center p-8 text-center backdrop-blur-sm transition-all duration-700 group-hover:bg-foreground/10">
+                <NuxtImg src="/android-chrome-192x192.png" alt="Site Icon"
+                  class="w-12 h-12 mb-6 opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+                <h3
+                  class="text-2xl font-serif font-light text-foreground/80 group-hover:text-primary transition-colors duration-500 leading-tight">
+                  {{ article.title }}
+                </h3>
               </div>
 
               <div class="absolute top-6 left-6 flex gap-2 flex-wrap z-20">
-                <Badge 
-                  v-for="tag in article.tags?.slice(0, 2)" :key="tag" variant="outline"
+                <Badge v-for="tag in article.tags?.slice(0, 2)" :key="tag" variant="outline"
                   class="border flex items-center border-white/20 bg-black/20 text-white backdrop-blur-xl rounded-full text-[10px] font-medium uppercase py-1.5 px-4 tracking-[0.2em] pointer-events-none">
                   {{ tag }}
                 </Badge>
               </div>
               <div
-                class="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10">
+                class="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
               </div>
             </div>
 

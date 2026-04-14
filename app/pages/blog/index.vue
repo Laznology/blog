@@ -126,8 +126,14 @@ function clearFilters() {
             <img v-if="article.image" :src="article.image"
               class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[1.5s] ease-out"
               :alt="article.title" />
-            <div v-else class="w-full h-full flex items-center justify-center">
-              <span class="text-[10px] font-serif tracking-widest text-foreground/20 uppercase">Aesthetic Void</span>
+            <div v-else
+              class="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-foreground/5 backdrop-blur-sm transition-all duration-700 group-hover:bg-foreground/10">
+              <img src="/android-chrome-192x192.png" alt="Site Icon"
+                class="w-10 h-10 mb-4 opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+              <h3
+                class="text-xl font-serif font-light text-foreground/80 group-hover:text-primary transition-colors duration-500 leading-snug">
+                {{ article.title }}
+              </h3>
             </div>
           </div>
 

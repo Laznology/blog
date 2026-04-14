@@ -88,7 +88,7 @@ export default defineNuxtConfig({
       cacheMaxAgeSeconds: 60 * 60 * 24 * 7,
     },
   },
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   compatibilityDate: "latest",
   vite: {
     plugins: [tailwindcss()],
